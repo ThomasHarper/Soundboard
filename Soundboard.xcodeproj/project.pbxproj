@@ -13,6 +13,7 @@
 		A68636ED1DCCF39100B6EE25 /* Soundboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A68636EB1DCCF39100B6EE25 /* Soundboard.xcdatamodeld */; };
 		A68636EF1DCCF39100B6EE25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68636EE1DCCF39100B6EE25 /* Assets.xcassets */; };
 		A68636F21DCCF39100B6EE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68636F01DCCF39100B6EE25 /* LaunchScreen.storyboard */; };
+		A68636FA1DCCF79C00B6EE25 /* SoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68636F91DCCF79C00B6EE25 /* SoundViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A68636EE1DCCF39100B6EE25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A68636F11DCCF39100B6EE25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A68636F31DCCF39100B6EE25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A68636F91DCCF79C00B6EE25 /* SoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				A68636E41DCCF39100B6EE25 /* AppDelegate.swift */,
 				A68636E61DCCF39100B6EE25 /* ListViewController.swift */,
 				A68636E81DCCF39100B6EE25 /* Main.storyboard */,
+				A68636F91DCCF79C00B6EE25 /* SoundViewController.swift */,
 				A68636EE1DCCF39100B6EE25 /* Assets.xcassets */,
 				A68636F01DCCF39100B6EE25 /* LaunchScreen.storyboard */,
 				A68636F31DCCF39100B6EE25 /* Info.plist */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68636FA1DCCF79C00B6EE25 /* SoundViewController.swift in Sources */,
 				A68636E71DCCF39100B6EE25 /* ListViewController.swift in Sources */,
 				A68636ED1DCCF39100B6EE25 /* Soundboard.xcdatamodeld in Sources */,
 				A68636E51DCCF39100B6EE25 /* AppDelegate.swift in Sources */,
