@@ -14,13 +14,20 @@ class SoundViewController: UIViewController {
     /////////////////// OUTLETS ////////////////////
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     ///////////////// PROPERTIES ///////////////////
     var audioRecorder : AVAudioRecorder?
+    var audioPlayer : AVAudioPlayer?
+    var audioURL : URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Let's setup our AVAudioRecorder
         setupRecorder()
+        
+        // Disabling Play button if there's no audio input
+        playButton.isEnabled = false
     }
     
     func setupRecorder() {
@@ -34,7 +41,7 @@ class SoundViewController: UIViewController {
         // Create URL for the audio file
             let basePath : String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
             let pathComponents = [basePath, "audio.m4a"]
-            let audioURL = NSURL.fileURL(withPathComponents: pathComponents)
+            audioURL = NSURL.fileURL(withPathComponents: pathComponents)
                 
         // Create settings for the audioRecorder
             var settings : [String : AnyObject] = [:]
@@ -54,19 +61,26 @@ class SoundViewController: UIViewController {
         if audioRecorder!.isRecording {
             // Stop the recording
             audioRecorder?.stop()
+            
             // Change button title to "Record"
             recordButton.setTitle("Record", for: .normal)
+            
+            // Enabling Play button if there's an audio input
+            playButton.isEnabled = true
         } else {
             // Start the recording
             audioRecorder?.record()
+            
             // Change button title to "Stop"
             recordButton.setTitle("Stop", for: .normal)
-            
         }
     }
     
     @IBAction func playTapped(_ sender: AnyObject) {
-        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioURL!)
+            audioPlayer?.play()
+        } catch {}
     }
     
     @IBAction func addTapped(_ sender: AnyObject) {
