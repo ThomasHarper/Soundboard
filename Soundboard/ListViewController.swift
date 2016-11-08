@@ -58,6 +58,23 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Deselecting the row tapped after the user tapped it
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    // Deleting an element, this func gives us the indexPath
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        // checking if we're on delete mode then deleting
+        if editingStyle == .delete {
+            let sound = sounds![indexPath.row]
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(sound)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            // Fetching the data once again then refreshing the tableView
+            do {
+                sounds = try context.fetch(Sound.fetchRequest())
+                tableView.reloadData()
+            } catch {}
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
