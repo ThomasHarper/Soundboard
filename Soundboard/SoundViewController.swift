@@ -26,8 +26,9 @@ class SoundViewController: UIViewController {
         // Let's setup our AVAudioRecorder
         setupRecorder()
         
-        // Disabling Play button if there's no audio input
+        // Disabling Play and Add button if there's no audio input
         playButton.isEnabled = false
+        addButton.isEnabled = false
     }
     
     func setupRecorder() {
@@ -65,8 +66,9 @@ class SoundViewController: UIViewController {
             // Change button title to "Record"
             recordButton.setTitle("Record", for: .normal)
             
-            // Enabling Play button if there's an audio input
+            // Enabling Play and Add button if there's an audio input
             playButton.isEnabled = true
+            addButton.isEnabled = true
         } else {
             // Start the recording
             audioRecorder?.record()
@@ -84,7 +86,15 @@ class SoundViewController: UIViewController {
     }
     
     @IBAction func addTapped(_ sender: AnyObject) {
+        // Instantiating the context for coreData
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let sound = Sound(context: context)
         
+        // Setting Sound attributes
+        sound.name = nameTextField.text
+        sound.audio = NSData(contentsOf: audioURL!)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        navigationController!.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
